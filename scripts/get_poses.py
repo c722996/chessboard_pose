@@ -55,9 +55,9 @@ objp[:,:2] = np.mgrid[0:n_rows,0:n_cols].T.reshape(-1,2)
 objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
 
-mypath = "/home/sampfeiffer/svn/argus_ws/src/argus_tools/data/calibrationdata_camera_1/"
+mypath = "/home/kuo/chessboard_pose/data/calibrationdata_camera_1/"
 print "Getting images from " + mypath
-images = glob.glob(mypath + '*.png')
+images = glob.glob(mypath + '*.jpg')
 #print "images is: " + str(images)
 
 
@@ -67,7 +67,11 @@ images = glob.glob(mypath + '*.png')
 inf = open("./calibration_return_values_rows_and_cols.pickle", "rb" )
 datathings = pickle.load(inf)
 ret, mtx, dist, rvecs, tvecs = datathings
-
+print ret
+print mtx
+print dist
+print rvecs
+print tvecs
 
 for idx, fname in enumerate(images):
     print "\nImage " + fname
@@ -119,6 +123,7 @@ for idx, fname in enumerate(images):
         cv2.putText(img,"Chessboard pose (lower right corner)", (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0)) # last part is color, this is cyan
         cv2.putText(img,mystr, (20, 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0))
         roll, pitch, yaw = rvecs
+        print rvecs
         roll = round(roll[0], 3)
         pitch = round(pitch[0], 3)
         yaw = round(yaw[0], 3)

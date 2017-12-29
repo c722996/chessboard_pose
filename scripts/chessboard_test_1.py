@@ -48,9 +48,9 @@ objp[:,:2] = np.mgrid[0:n_rows,0:n_cols].T.reshape(-1,2)
 objpoints = [] # 3d point in real world space
 imgpoints = [] # 2d points in image plane.
 
-mypath = "/home/sampfeiffer/svn/argus_ws/src/argus_tools/data/calibrationdata_camera_1/"
+mypath = "/home/kuo/chessboard_pose/data/calibrationdata_camera_1/"
 print "Getting images from " + mypath
-images = glob.glob(mypath + '*.png')
+images = glob.glob(mypath + '*.jpg')
 #print "images is: " + str(images)
 
 criteria_calibrator = ( cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.1 )
