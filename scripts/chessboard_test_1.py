@@ -97,4 +97,9 @@ except:
     print "Failed getting cv2.calibrateCamera"
     pass
 
+print ret
+print mtx
+print dist
+print rvecs
+print tvecs
 #cv2.destroyAllWindows()
